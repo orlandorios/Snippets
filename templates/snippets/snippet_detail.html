@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}detail{% endblock %}
+
+{% block content %}
+        <h1>{{ snippet }}</h1>
+        <aside class="actions">
+                <a class="btn btn-secondary" href="{% url 'snippet_edit' pk=snippet.pk %}">
+                Edit Snippet
+                </a>
+        </aside>
+
+{% endblock %}
