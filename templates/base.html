@@ -7,9 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
     <title>Snippets</title>
+
 </head>
+
 <body>
+    <a href="{% url 'create_snippet' %}" class="top-menu">
+        Create A Snippet
+    </a>
+    
+    <a href="{% url 'registration_register' %}">Sign Up</a>
+
+    <a href="{% url 'auth_login' %}">Log In</a>
+
+    <h1>Snippets</h1>
     {% block content %}
     {% endblock %}  
 </body>

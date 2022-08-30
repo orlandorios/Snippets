@@ -4,10 +4,13 @@
 
 {% block content %}
         <h1>{{ snippet }}</h1>
+        <p>{{snippet.code}}</p>
         <aside class="actions">
                 <a class="btn btn-secondary" href="{% url 'snippet_edit' pk=snippet.pk %}">
                 Edit Snippet
                 </a>
         </aside>
+        <a class="btn btn-default" href="{% url 'snippet_delete' pk=snippet.pk %}" data-0='snippet_delete'>Delete Snippet
+        </a>
 
 {% endblock %}

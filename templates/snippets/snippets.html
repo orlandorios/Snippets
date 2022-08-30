@@ -4,12 +4,12 @@
 
 {% block content %}
 
-<h1>Snippets</h1>
+<h2>Snippet Database</h2>
 
 <div class="container">
     {% for snippet in snippets %}
     <div class="snippet-box">
-        {{ snippets }}
+        <a class="snippet-name" href="{% url 'snippet_detail' pk=snippet.pk %}"> {{ snippet }} </a>
     </div>
     {% endfor %}
 </div>

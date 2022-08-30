@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Snippet
-from .forms import SnippetForm
+from .forms import SnippetForm, SnippetDelete
 
 # Create your views here.
 def snippets(request):
@@ -31,3 +31,16 @@ def snippet_edit(request, pk):
     else:
         form = SnippetForm(instance=snippet)
     return render(request, 'snippets/snippet_edit.html', {'form': form})
+
+
+
+def snippet_delete(request, pk):
+    snippet = get_object_or_404(Snippet, pk=pk)
+    if request.method == "POST":
+        form = SnippetDelete(request.POST, instance=snippet)
+        if form.is_valid():
+            snippet.delete()
+            return redirect('snippets')
+    else:
+        form = SnippetDelete(instance=snippet)
+    return render(request, 'snippets/snippet_delete.html')

@@ -2,8 +2,8 @@
 
 {% block content %}
     <h2>Edit Snippet</h2>
-    <form method="POST" class="post-form">{% csrf_token %}
+    <form method="POST" class="snippet-form">{% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="save btn btn-secondary">Save</button>
+        <button type="submit" class="save btn btn-secondary">Update</button>
     </form>
 {% endblock %}
