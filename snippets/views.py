@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from .models import Snippet
 from .forms import SnippetForm, SnippetDelete
 
 # Create your views here.
+
 def snippets(request):
     snippets = Snippet.objects.all()
     return render(request, 'snippets/snippets.html', {'snippets': snippets})

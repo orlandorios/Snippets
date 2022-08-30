@@ -129,5 +129,7 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Django Registration Redux
+LOGIN_REDIRECT_URL = '/'
 SIMPLE_BACKEND_REDIRECT_URL = '/'
 AUTH_USER_MODEL = 'snippets.User'
+LOGIN_URL = '/accounts/login/'
