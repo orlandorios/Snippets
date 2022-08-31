@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h2>Favorite Snippet</h2>
+
+<div>
+    <form action="{% url 'add_favorite' pk=snippet.pk %}"
+    method="POST">
+        {% csrf_token %}
+        {{ form.as p }}
+        <div>
+            <button type="submit">Add Favorite</button>
+        </div>
+    </form>
+</div>
+
+{% if snippet in favorite_snippets %}
+<p> <a href="{% url 'add_favorite' pk=snippet.pk %}"> &#11088; Undo Favorite </a>
+    {% else %}
+<p></p>
+<a href="{% url 'add_favorite' pk=snippet.pk %}"> &#9734; Add to Favorites</a>
+<p></p>
+</p>
+
+{% endif %} 
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Undo Favorite Snippet</h2>
+
+{% if snippet in favorite_snippets %}
+<a href="{ % url 'undo_favorite' pk=snippet.pk %}"> &#11088; Undo Favorite </a>
+{% endif %}
+
+{% endblock %}

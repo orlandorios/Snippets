@@ -20,9 +20,22 @@ class Snippet(models.Model):
     def __str__(self):
         return f'{self.description} in {self.language}'
     
+    def check_if_user_favorite(self, user):
+        for favorite in self.favorites.all():
+            if favorite.snippet == self:
+                return True
+    
 class Language(models.Model):
     name = models.CharField(max_length=255)
     version = models.FloatField(blank=True, null=True)
     
     def __str__(self):
         return f'{self.name} {self.version}'
+    
+class Favorite(models.Model):
+    user = models.ForeignKey("User", on_delete=models.CASCADE, related_name="favorites")
+    snippet = models.ForeignKey("Snippet", on_delete=models.CASCADE, related_name="favorites")
+    create_at = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return f'{self.user}: {self.snippet}'

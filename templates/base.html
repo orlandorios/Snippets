@@ -13,13 +13,19 @@
 </head>
 
 <body>
-    <a href="{% url 'create_snippet' %}" class="top-menu">
-        Create A Snippet
-    </a>
-    
-    <a href="{% url 'registration_register' %}">Sign Up</a>
+    <header></header>
+        <a href="{% url 'create_snippet' %}" class="top-menu">
+            Create A Snippet
+        </a>
+        
+        <a href="{% url 'registration_register' %}">Sign Up</a>
 
-    <a href="{% url 'auth_login' %}">Log In</a>
+        <a href="{% url 'auth_login' %}">Log In</a>
+
+        <a href="/accounts/logout">Logout</a>
+
+        <a href="/snippets/profile">{{request.user.username}}</a>
+    </header>
 
     <h1>Snippets</h1>
     {% block content %}
