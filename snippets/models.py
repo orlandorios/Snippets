@@ -15,15 +15,20 @@ class Snippet(models.Model):
     # related name should be the plural of the model that is in. This is a 02M relationship.
     # A snippet has one user and the user has many snippets.
     # user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="snippets")
-    users = models.ManyToManyField('User', related_name='snippets', blank=True)
+    users = models.ManyToManyField('User', related_name='snippets')
+    author = models.ForeignKey('User', on_delete=models.CASCADE, related_name="user_snippet")
+    parent = models.ForeignKey('Snippet', on_delete=models.SET_NULL, related_name="fork",
+        blank=True, null=True)
+    
     
     def __str__(self):
-        return f'{self.description} in {self.language}'
+        return f'{self.description} in {self.language} created by {self.author}'
     
     def check_if_user_favorite(self, user):
         for favorite in self.favorites.all():
             if favorite.snippet == self:
                 return True
+            
     
 class Language(models.Model):
     name = models.CharField(max_length=255)
@@ -31,6 +36,7 @@ class Language(models.Model):
     
     def __str__(self):
         return f'{self.name} {self.version}'
+    
     
 class Favorite(models.Model):
     user = models.ForeignKey("User", on_delete=models.CASCADE, related_name="favorites")
