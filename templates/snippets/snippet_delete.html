@@ -4,11 +4,13 @@
     <h2>Delete Snippet</h2>
     <p>{{snippet.code}}</p>
     <form method="POST" class="delete-form">{% csrf_token %}
+
         {{ form.as_p }}
+        
         <h2>Are you sure you want to delete snippet?</h2>
-        <button type="submit" class="btn btn-danger">Confirm</button>
-
-
+        <button type="submit" class="btn btn-outline-danger">confirm</button>
+        <a class="btn btn-outline-secondary">cancel</a>
+ 
     </form>
 </div>
 {% endblock %}

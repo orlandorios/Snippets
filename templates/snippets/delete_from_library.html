@@ -2,10 +2,10 @@
 
 {% block content %}
 
-<h2>Undo Favorite Snippet</h2>
+<h2>Delete From Library</h2>
 
 {% if snippet in favorite_snippets %}
-<a href="{ % url 'undo_favorite' pk=snippet.pk %}"> &#11088; Undo Favorite </a>
+<a href="{ % url 'delete_from_library' pk=snippet.pk %}"> &#11088; Delete from Library </a>
 {% endif %}
 
 {% endblock %}

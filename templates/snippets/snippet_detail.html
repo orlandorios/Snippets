@@ -4,16 +4,18 @@
 
 {% block content %}
         <h1>{{ snippet }}</h1>
-        <p>{{snippet.code}}</p>
-        <aside class="actions">
-                <a class="btn btn-secondary" href="{% url 'snippet_edit' pk=snippet.pk %}">
-                Edit Snippet
-                </a>
-        </aside>
-        <a class="btn btn-default" href="{% url 'snippet_delete' pk=snippet.pk %}" data-0='snippet_delete'>Delete Snippet
+        <p><pre><code class="language-css">{{snippet.code}}</code></pre></p>
+
+        <button class="btn btn-secondary" data-clipboard-text="{{snippet.code}}">
+                Copy to clipboard
+        </button>
+
+        <a class="btn btn-primary" href="{% url 'add_to_library' pk=snippet.pk %}" data-0='add_to_library'>Add Snippet to Library
         </a>
-        <br>
-        <a class="btn btn-default" href="{% url 'add_to_library' pk=snippet.pk %}" data-0='add_to_library'>Add Snippet to Library
-        </a>
+
+        <a class="btn btn-warning" href="{% url 'snippet_edit' pk=snippet.pk %}" role="button">Edit Snippet</a>
+
+        <a class="btn btn-danger"href="{% url 'snippet_delete' pk=snippet.pk %}" data-0='snippet_delete'>Delete Snippet</a>
+
 
 {% endblock %}
