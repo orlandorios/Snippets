@@ -5,7 +5,7 @@
     <h2>Favorite Snippet</h2>
 
 <div>
-    <form action="{% url 'add_favorite' pk=snippet.pk %}"
+    <form action="{% url 'add_to_library' pk=snippet.pk %}"
     method="POST">
         {% csrf_token %}
         {{ form.as p }}
@@ -15,11 +15,11 @@
     </form>
 </div>
 
-{% if snippet in favorite_snippets %}
-<p> <a href="{% url 'add_favorite' pk=snippet.pk %}"> &#11088; Undo Favorite </a>
+{% if snippet in user.favorites.all %}
+<p> <a href="{% url 'delete_from_library' pk=snippet.pk %}"> &#11088; Undo Favorite </a>
     {% else %}
 <p></p>
-<a href="{% url 'add_favorite' pk=snippet.pk %}"> &#9734; Add to Favorites</a>
+<a href="{% url 'add_to_library' pk=snippet.pk %}"> &#9734; Add to Favorites</a>
 <p></p>
 </p>
 

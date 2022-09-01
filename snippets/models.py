@@ -24,7 +24,7 @@ class Snippet(models.Model):
     def __str__(self):
         return f'{self.description} in {self.language} created by {self.author}'
     
-    def check_if_user_favorite(self, user):
+    def is_user_favorite(self, user):
         for favorite in self.favorites.all():
             if favorite.snippet == self:
                 return True

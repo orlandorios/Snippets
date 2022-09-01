@@ -11,6 +11,17 @@
     <div class="snippet-box">
         <a class="snippet-name" href="{% url 'snippet_detail' pk=snippet.pk %}"> {{ snippet }} </a>
     </div>
+    
+    
+    {% if snippet in user.favorites.all %}
+    <p> <a href="{% url 'delete_from_library' pk=snippet.pk %}"> &#11088; Undo Favorite </a>
+        {% else %}
+        <p></p>
+        <a href="{% url 'add_to_library' pk=snippet.pk %}"> &#9734; Add to Favorites</a>
+        <p></p>
+    </p>
+    {% endif %} 
+    
     {% endfor %}
 </div>
 {% endblock %}

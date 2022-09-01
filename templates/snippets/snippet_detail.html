@@ -12,5 +12,8 @@
         </aside>
         <a class="btn btn-default" href="{% url 'snippet_delete' pk=snippet.pk %}" data-0='snippet_delete'>Delete Snippet
         </a>
+        <br>
+        <a class="btn btn-default" href="{% url 'add_to_library' pk=snippet.pk %}" data-0='add_to_library'>Add Snippet to Library
+        </a>
 
 {% endblock %}

@@ -28,6 +28,7 @@ def create_snippet(request):
     return render (request, 'snippets/create_snippet.html', {'form':form})
 
 
+@login_required
 def snippet_edit(request, pk):
     snippet = get_object_or_404(Snippet, pk=pk)
     if request.method == "POST":
@@ -40,6 +41,7 @@ def snippet_edit(request, pk):
     return render(request, 'snippets/snippet_edit.html', {'form': form})
 
 
+@login_required
 def snippet_delete(request, pk):
     snippet = get_object_or_404(Snippet, pk=pk)
     if request.method == "POST":
@@ -56,13 +58,13 @@ def add_to_library(request, pk):
     snippet = get_object_or_404(Snippet, pk=pk)
     favorite = Favorite.objects.create(snippet=snippet, user=request.user)
     favorite.save()
-    return redirect(to="snippets.html")
+    return redirect(to="snippets")
 
 
 def delete_from_library(request, pk):
-    favorite = Favorite.objects.get(snippet__id=pk)
+    favorite = Favorite.objects.get(snippet__id=pk, user=request.user)
     favorite.delete()
-    return redirect(to="snippets.html")
+    return redirect(to="snippets")
 
 
 #user
