@@ -7,7 +7,8 @@ from .forms import SnippetForm, SnippetDelete, LanguageForm
 
 def snippets(request):
     snippets = Snippet.objects.all()
-    return render(request, 'snippets/snippets.html', {'snippets': snippets})
+    favorite_snippets=[snippet for snippet in snippets if snippet.is_user_favorite(request.user)]
+    return render(request, 'snippets/snippets.html', {'snippets': snippets, 'favorite_snippets': favorite_snippets})
 
 
 def snippet_detail(request, pk):

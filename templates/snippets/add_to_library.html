@@ -15,7 +15,7 @@
     </form>
 </div>
 
-{% if snippet in user.favorites.all %}
+{% if snippet in favorite_snippets %}
 <p> <a href="{% url 'delete_from_library' pk=snippet.pk %}"> &#11088; Undo Favorite </a>
     {% else %}
 <p></p>
