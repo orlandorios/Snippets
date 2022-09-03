@@ -12,17 +12,6 @@
         <a class="snippet-name" href="{% url 'snippet_detail' pk=snippet.pk %}"> {{ snippet }} </a>
     </div>
     
-    
-        <!-- {% if snippet in user.favorites.all %}
-        <p> 
-            <a href="{% url 'delete_from_library' pk=snippet.pk %}"> &#11088; Remove from Library</a>
-            {% else %}
-            <p></p>
-            <a href="{% url 'add_to_library' pk=snippet.pk %}"> &#9734; Add to Library</a>
-            <p></p>
-        </p>
-        {% endif %}  -->
-    
     {% endfor %}
     <hr/>
     {% for favorite in user.favorites.all %} 
